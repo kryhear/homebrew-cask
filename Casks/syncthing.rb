@@ -1,19 +1,14 @@
 cask :v1 => 'syncthing' do
-  version '0.11.18'
+  version '0.11.22'
+  sha256 'bfaf07891d39a9ed5699b49313640a7525a3d5485f6defa523a2905c06bd2d9e'
+
+  url "https://github.com/syncthing/syncthing/releases/download/v#{version}/syncthing-macosx-amd64-v#{version}.tar.gz"
   appcast 'https://github.com/syncthing/syncthing/releases.atom'
   name 'Syncthing'
-  homepage 'https://syncthing.net'
+  homepage 'https://syncthing.net/'
   license :mpl
 
-  if Hardware::CPU.is_32_bit?
-    url "https://github.com/syncthing/syncthing/releases/download/v#{version}/syncthing-macosx-386-v#{version}.tar.gz"
-    sha256 'f16a852b26bd80690f00404f38a33fc4691893fb2cb3da2620a9b90101b5a0bd'
-    binary "syncthing-macosx-386-v#{version}/syncthing"
-  else
-    url "https://github.com/syncthing/syncthing/releases/download/v#{version}/syncthing-macosx-amd64-v#{version}.tar.gz"
-    sha256 '7a39683a4b22d24dfc7107011ad0b3315f57ef42a793f5b8bc18216a80229d8f'
-    binary "syncthing-macosx-amd64-v#{version}/syncthing"
-  end
+  binary "syncthing-macosx-amd64-v#{version}/syncthing"
 
   zap :delete => '~/Library/Application Support/Syncthing'
 end
